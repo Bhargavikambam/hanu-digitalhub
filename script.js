@@ -158,17 +158,20 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
     }
-
 /* =====================================================
    5. CONTACT FORM
 ===================================================== */
 
-const contactForm = document.querySelector("#contactForm");
+const contactForm = document.querySelector(".contact-form");
 
 if (contactForm) {
 
     const submitButton = contactForm.querySelector(
         'button[type="submit"]'
+    );
+
+    const successMessage = document.querySelector(
+        "#formSuccessMessage"
     );
 
     contactForm.addEventListener("submit", async function (e) {
@@ -208,29 +211,25 @@ if (contactForm) {
 
             if (result.success) {
 
-                contactForm.innerHTML = `
-                    <div class="thank-you-message">
+                // Show success message below button
+                if (successMessage) {
+                    successMessage.style.display = "block";
+                }
 
-                        <div class="thank-icon">
-                            <i class="fa-solid fa-check"></i>
-                        </div>
+                // Keep form visible
+                contactForm.reset();
 
-                        <h2>Thank You!</h2>
+                submitButton.disabled = false;
+                submitButton.dataset.submitting = "false";
 
-                        <p>
-                            Your message has been sent successfully.
-                        </p>
-
-                        <p>
-                            We'll get back to you soon.
-                        </p>
-
-                    </div>
+                submitButton.innerHTML = `
+                    Send Message
+                    <i class="fa-solid fa-paper-plane"></i>
                 `;
 
             } else {
 
-                throw new Error("Form submission failed");
+                throw new Error("Submission failed");
 
             }
 
@@ -244,9 +243,8 @@ if (contactForm) {
                 <i class="fa-solid fa-paper-plane"></i>
             `;
 
-            alert(
-                "Something went wrong. Please try again."
-            );
+            alert("Something went wrong. Please try again.");
+
         }
 
     });
