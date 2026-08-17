@@ -159,7 +159,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
-
 /* =====================================================
    5. CONTACT FORM
 ===================================================== */
@@ -207,7 +206,7 @@ if (contactForm) {
 
             const result = await response.json();
 
-            if (response.ok && result.success) {
+            if (result.success) {
 
                 contactForm.innerHTML = `
                     <div class="thank-you-message">
@@ -231,7 +230,7 @@ if (contactForm) {
 
             } else {
 
-                throw new Error("Submission failed");
+                throw new Error("Form submission failed");
 
             }
 
@@ -246,11 +245,12 @@ if (contactForm) {
             `;
 
             alert(
-                "Unable to send your message. Please try again."
+                "Something went wrong. Please try again."
             );
         }
 
     });
+
 }
 
     /* =====================================================
