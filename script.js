@@ -160,62 +160,98 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
+/* =====================================================
+   5. CONTACT FORM
+===================================================== */
 
-    /* =====================================================
-       5. CONTACT FORM
-    ===================================================== */
+const contactForm = document.querySelector("#contactForm");
 
-    const contactForm =
-        document.querySelector(".contact-form");
+if (contactForm) {
 
-    if (contactForm) {
+    const submitButton = contactForm.querySelector(
+        'button[type="submit"]'
+    );
 
-        const submitButton =
-            contactForm.querySelector(
-                'button[type="submit"]'
+    contactForm.addEventListener("submit", async function (e) {
+
+        e.preventDefault();
+
+        if (!submitButton) return;
+
+        if (submitButton.dataset.submitting === "true") {
+            return;
+        }
+
+        submitButton.dataset.submitting = "true";
+        submitButton.disabled = true;
+
+        submitButton.innerHTML = `
+            <i class="fa-solid fa-spinner fa-spin"></i>
+            Sending...
+        `;
+
+        try {
+
+            const formData = new FormData(contactForm);
+
+            const response = await fetch(
+                "https://api.web3forms.com/submit",
+                {
+                    method: "POST",
+                    body: formData,
+                    headers: {
+                        "Accept": "application/json"
+                    }
+                }
             );
 
+            const result = await response.json();
 
-        contactForm.addEventListener(
-            "submit",
-            function () {
+            if (response.ok && result.success) {
 
-                if (!submitButton) {
-                    return;
-                }
+                contactForm.innerHTML = `
+                    <div class="thank-you-message">
 
+                        <div class="thank-icon">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
 
-                // Prevent double clicking
+                        <h2>Thank You!</h2>
 
-                if (
-                    submitButton.dataset.submitting ===
-                    "true"
-                ) {
+                        <p>
+                            Your message has been sent successfully.
+                        </p>
 
-                    return;
+                        <p>
+                            We'll get back to you soon.
+                        </p>
 
-                }
-
-
-                submitButton.dataset.submitting =
-                    "true";
-
-
-                // Change button appearance
-
-                submitButton.disabled = true;
-
-                submitButton.innerHTML = `
-                    <i class="fa-solid fa-spinner fa-spin"></i>
-                    Sending...
+                    </div>
                 `;
 
+            } else {
+
+                throw new Error("Submission failed");
+
             }
-        );
 
-    }
+        } catch (error) {
 
+            submitButton.disabled = false;
+            submitButton.dataset.submitting = "false";
 
+            submitButton.innerHTML = `
+                Send Message
+                <i class="fa-solid fa-paper-plane"></i>
+            `;
+
+            alert(
+                "Unable to send your message. Please try again."
+            );
+        }
+
+    });
+}
 
     /* =====================================================
        6. AUTOMATIC FOOTER YEAR

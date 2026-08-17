@@ -272,144 +272,113 @@
             </div>
 
 
+<!-- =================================================
+     CONTACT FORM
+================================================= -->
 
-            <!-- =================================================
-                 CONTACT FORM
-            ================================================= -->
-
-            <form
-                action="https://api.web3forms.com/submit"
-                method="POST"
-                class="contact-form"
-            >
-
-
-                <!-- WEB3FORMS ACCESS KEY -->
-
-                <input
-                    type="hidden"
-                    name="access_key"
-                    value="7d4d250a-5daa-4819-9005-3b24bc211c16"
-                >
-
-
-                <!-- EMAIL SUBJECT -->
-
-                <input
-                    type="hidden"
-                    name="subject"
-                    value="New Hanu Digital Hub Website Enquiry"
-                >
-
-
-                <!-- FROM NAME -->
-
-                <input
-                    type="hidden"
-                    name="from_name"
-                    value="Hanu Digital Hub Website"
-                >
-
-
-                <!-- SPAM PROTECTION -->
-
-                <input
-                    type="checkbox"
-                    name="botcheck"
-                    class="hidden"
-                    style="display:none;"
-                >
-
-
-                <!-- NAME -->
-
-                <div class="form-group">
-
-                    <label for="name">
-                        Your Name
-                    </label>
-
-                    <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        placeholder="Enter your name"
-                        required
-                    >
-
-                </div>
-
-
-                <!-- EMAIL -->
-
-                <div class="form-group">
-
-                    <label for="email">
-                        Email Address
-                    </label>
-
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        placeholder="Enter your email"
-                        required
-                    >
-
-                </div>
-
-
-                <!-- MESSAGE -->
-
-                <div class="form-group">
-
-                    <label for="message">
-                        Your Message
-                    </label>
-
-                    <textarea
-                        id="message"
-                        name="message"
-                        rows="5"
-                        placeholder="Tell us what you need..."
-                        required
-                    ></textarea>
-
-                </div>
-
-
-                <!-- REDIRECT -->
-
-                <input
-    type="hidden"
-    name="redirect"
-    value="https://hanu-digitalhub.vercel.app/contact.html"
+<form
+    id="contactForm"
+    action="https://api.web3forms.com/submit"
+    method="POST"
+    class="contact-form"
 >
 
+    <!-- WEB3FORMS ACCESS KEY -->
+    <input
+        type="hidden"
+        name="access_key"
+        value="7d4d250a-5daa-4819-9005-3b24bc211c16"
+    >
 
-                <!-- SUBMIT -->
+    <!-- EMAIL SUBJECT -->
+    <input
+        type="hidden"
+        name="subject"
+        value="New Website Enquiry - Hanu Digital Hub"
+    >
 
-                <button
-                    type="submit"
-                    class="btn btn-primary form-button"
-                >
+    <!-- FROM NAME -->
+    <input
+        type="hidden"
+        name="from_name"
+        value="Hanu Digital Hub Website"
+    >
 
-                    Send Message
+    <!-- SPAM PROTECTION -->
+    <input
+        type="checkbox"
+        name="botcheck"
+        style="display:none;"
+        tabindex="-1"
+        autocomplete="off"
+    >
 
-                    <i class="fa-solid fa-paper-plane"></i>
+    <!-- NAME -->
+    <div class="form-group">
 
-                </button>
+        <label for="name">
+            Your Name
+        </label>
 
+        <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Enter your name"
+            required
+        >
 
-                <p class="form-note">
+    </div>
 
-                    <i class="fa-solid fa-lock"></i>
+    <!-- EMAIL -->
+    <div class="form-group">
 
-                    Your message will be sent securely.
+        <label for="email">
+            Email Address
+        </label>
 
-                </p>
+        <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Enter your email"
+            required
+        >
 
-            </form>
+    </div>
+
+    <!-- MESSAGE -->
+    <div class="form-group">
+
+        <label for="message">
+            Your Message
+        </label>
+
+        <textarea
+            id="message"
+            name="message"
+            rows="5"
+            placeholder="Tell us what you need..."
+            required
+        ></textarea>
+
+    </div>
+
+    <!-- SUBMIT -->
+    <button
+        type="submit"
+        class="btn btn-primary form-button"
+    >
+        Send Message
+        <i class="fa-solid fa-paper-plane"></i>
+    </button>
+
+    <p class="form-note">
+        <i class="fa-solid fa-lock"></i>
+        Your message will be sent securely.
+    </p>
+
+</form>
 
         </div>
 
