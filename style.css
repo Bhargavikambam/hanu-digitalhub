@@ -2082,18 +2082,3 @@ body.page-loaded {
 
     transform: translateY(0);
 }
-
-
-.form-success-message {
-    display: none;
-    margin-top: 15px;
-    text-align: center;
-    color: #16a34a;
-    font-size: 15px;
-    font-weight: 600;
-}
-
-.form-success-message i {
-    margin-right: 6px;
-    font-size: 17px;
-}

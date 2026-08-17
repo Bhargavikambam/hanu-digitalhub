@@ -158,20 +158,18 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
     }
+
+
 /* =====================================================
    5. CONTACT FORM
 ===================================================== */
 
-const contactForm = document.querySelector(".contact-form");
+const contactForm = document.querySelector("#contactForm");
 
 if (contactForm) {
 
     const submitButton = contactForm.querySelector(
         'button[type="submit"]'
-    );
-
-    const successMessage = document.querySelector(
-        "#formSuccessMessage"
     );
 
     contactForm.addEventListener("submit", async function (e) {
@@ -209,22 +207,26 @@ if (contactForm) {
 
             const result = await response.json();
 
-            if (result.success) {
+            if (response.ok && result.success) {
 
-                // Show success message below button
-                if (successMessage) {
-                    successMessage.style.display = "block";
-                }
+                contactForm.innerHTML = `
+                    <div class="thank-you-message">
 
-                // Keep form visible
-                contactForm.reset();
+                        <div class="thank-icon">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
 
-                submitButton.disabled = false;
-                submitButton.dataset.submitting = "false";
+                        <h2>Thank You!</h2>
 
-                submitButton.innerHTML = `
-                    Send Message
-                    <i class="fa-solid fa-paper-plane"></i>
+                        <p>
+                            Your message has been sent successfully.
+                        </p>
+
+                        <p>
+                            We'll get back to you soon.
+                        </p>
+
+                    </div>
                 `;
 
             } else {
@@ -243,12 +245,12 @@ if (contactForm) {
                 <i class="fa-solid fa-paper-plane"></i>
             `;
 
-            alert("Something went wrong. Please try again.");
-
+            alert(
+                "Unable to send your message. Please try again."
+            );
         }
 
     });
-
 }
 
     /* =====================================================
