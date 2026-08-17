@@ -2082,3 +2082,31 @@ body.page-loaded {
 
     transform: translateY(0);
 }
+
+.thank-you-message {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.thank-icon {
+    width: 65px;
+    height: 65px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #111;
+    color: #fff;
+    font-size: 28px;
+}
+
+.thank-you-message h2 {
+    font-size: 30px;
+    margin-bottom: 12px;
+}
+
+.thank-you-message p {
+    margin: 6px 0;
+    color: #666;
+}
